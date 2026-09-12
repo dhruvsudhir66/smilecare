@@ -3,7 +3,9 @@
 import {
   motion,
   type HTMLMotionProps,
+  type Variants,
 } from "framer-motion";
+
 import type { ReactNode } from "react";
 
 type RevealProps = HTMLMotionProps<"div"> & {
@@ -14,7 +16,7 @@ type RevealProps = HTMLMotionProps<"div"> & {
 export function Reveal({
   children,
   delay = 0,
-  className = "",
+  className,
   ...props
 }: RevealProps) {
   return (
@@ -44,15 +46,17 @@ export function Reveal({
   );
 }
 
+type ImageRevealProps = {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+};
+
 export function ImageReveal({
   children,
   delay = 0,
   className = "",
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+}: ImageRevealProps) {
   return (
     <motion.div
       initial={{
@@ -77,13 +81,17 @@ export function ImageReveal({
   );
 }
 
+type StaggerProps = {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+};
+
 export function Stagger({
   children,
   className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+  delay = 0,
+}: StaggerProps) {
   return (
     <motion.div
       initial="hidden"
@@ -97,6 +105,7 @@ export function Stagger({
         show: {
           transition: {
             staggerChildren: 0.09,
+            delayChildren: delay,
           },
         },
       }}
@@ -107,7 +116,13 @@ export function Stagger({
   );
 }
 
-export const staggerItem = {
+/*
+ * Reusable variants for staggered children.
+ *
+ * Explicitly typed as Variants so Framer Motion's
+ * easing tuple is correctly inferred by TypeScript.
+ */
+export const staggerItem: Variants = {
   hidden: {
     opacity: 0,
     y: 25,
@@ -123,13 +138,15 @@ export const staggerItem = {
   },
 };
 
+type MotionArticleProps = {
+  children: ReactNode;
+  className?: string;
+};
+
 export function MotionArticle({
   children,
   className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+}: MotionArticleProps) {
   return (
     <motion.article
       variants={staggerItem}
