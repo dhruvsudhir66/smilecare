@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+export default function NotFound(){return <div className="grid min-h-[65vh] place-items-center px-6 text-center"><div><p className="text-[11px] font-black uppercase tracking-[.22em] text-[#087b78]">404 · Page not found</p><h1 className="display mt-4 text-5xl font-black text-[#071d31]">That smile page has moved.</h1><p className="mx-auto mt-5 max-w-md text-sm leading-7 text-slate-500">Let&apos;s get you back to the main SmileCare experience.</p><Link href="/" className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#102a43] px-6 py-4 text-sm font-black text-white"><ArrowLeft size={16}/> Back home</Link></div></div>}

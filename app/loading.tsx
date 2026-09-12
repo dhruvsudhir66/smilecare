@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="grid min-h-[60vh] place-items-center bg-[#f8fbfa]"><div className="text-center"><div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-[#d9f7f4] border-t-[#12a6a0]"/><p className="mt-4 text-sm font-bold text-slate-500">Preparing your SmileCare experience…</p></div></div>}

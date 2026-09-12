@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #171a19;
+  --paper: #f4f1ea;
+  --paper-dark: #e9e5dc;
+  --mint: #b8e5d8;
+  --mint-strong: #65cdb4;
+  --line: rgba(23, 26, 25, 0.14);
+  --muted: #6d726f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--mint);
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container-page {
+  width: min(1380px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.display {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.055em;
+}
+
+.section {
+  padding-block: 120px;
+}
+
+@media (max-width: 768px) {
+  .container-page {
+    width: min(100% - 28px, 1380px);
+  }
+
+  .section {
+    padding-block: 80px;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--mint-strong);
+  outline-offset: 4px;
+}
+
+.editorial-line {
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

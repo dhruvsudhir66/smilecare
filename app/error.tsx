@@ -1,0 +1,3 @@
+"use client";
+import { useEffect } from "react";
+export default function Error({error,reset}:{error:Error&{digest?:string};reset:()=>void}){useEffect(()=>{console.error(error)},[error]);return <div className="grid min-h-[65vh] place-items-center px-6 text-center"><div><p className="text-[11px] font-black uppercase tracking-[.22em] text-[#087b78]">Something went wrong</p><h1 className="display mt-4 text-5xl font-black text-[#071d31]">Let&apos;s try that again.</h1><p className="mx-auto mt-5 max-w-md text-sm leading-7 text-slate-500">An unexpected error occurred. Your information hasn&apos;t been changed.</p><button onClick={()=>reset()} className="mt-7 rounded-full bg-[#102a43] px-6 py-4 text-sm font-black text-white">Try again</button></div></div>}
